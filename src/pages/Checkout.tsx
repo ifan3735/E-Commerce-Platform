@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../store/store';
 import Button from '../components/Common/Button';
 import Input from '../components/Common/Input';
-import  clearCart  from '../store/cartSlice';
+import { clearCart } from '../store/cartSlice';
 import { useNavigate } from 'react-router-dom';
 
 const Checkout: React.FC = () => {
@@ -24,23 +24,22 @@ const Checkout: React.FC = () => {
         paymentInfo,
         status: 'Pending',
       };
-      // Replace with actual order creation logic
-      console.log('Placing order:', order);
+      await createOrder(order);
       dispatch(clearCart());
-      navigate('/');
+      navigate('/orders'); // Navigate to order confirmation page or orders page
     } catch (error) {
-      console.error('Error placing order:', error);
+      console.error('Error creating order:', error);
     }
-  }
+  };
 
   return (
-    <div className="max-w-3xl mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-4">Checkout</h2>
-      <div className="mb-4">
+    <div className="max-w-3xl mx-auto p-6 bg-white shadow rounded-lg">
+      <h2 className="text-3xl font-bold mb-6">Checkout</h2>
+      <div className="mb-6">
         <h3 className="text-lg font-semibold">Shipping Address</h3>
         <Input label="Address" value={address} onChange={(e) => setAddress(e.target.value)} />
       </div>
-      <div className="mb-4">
+      <div className="mb-6">
         <h3 className="text-lg font-semibold">Payment Information</h3>
         <Input label="Payment Info" value={paymentInfo} onChange={(e) => setPaymentInfo(e.target.value)} />
       </div>

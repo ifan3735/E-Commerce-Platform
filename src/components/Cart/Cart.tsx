@@ -14,16 +14,16 @@ const Cart: React.FC = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-4">Shopping Cart</h2>
+    <div className="max-w-4xl mx-auto p-6 bg-white shadow rounded-lg">
+      <h2 className="text-3xl font-bold mb-6">Shopping Cart</h2>
       {cartItems.length === 0 ? (
-        <p>Your cart is empty</p>
+        <p className="text-gray-500 text-lg">Your cart is empty</p>
       ) : (
         <div>
           {cartItems.map(item => (
             <CartItem key={item.id} item={item} />
           ))}
-          <div className="text-right mt-4">
+          <div className="text-right mt-6">
             <Button onClick={handleCheckout} className="w-auto">Proceed to Checkout</Button>
           </div>
         </div>

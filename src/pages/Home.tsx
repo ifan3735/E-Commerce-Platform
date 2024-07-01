@@ -4,7 +4,7 @@ import ProductList from '../components/Product/ProductList';
 const Home: React.FC = () => {
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-4">Welcome to MyShop</h1>
+      <h1 className="text-4xl font-bold mb-8 text-center">Welcome to MyShop</h1>
       <ProductList />
     </div>
   );

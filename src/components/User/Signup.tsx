@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { signup } from '../../services/authService';
 import { useNavigate } from 'react-router-dom';
 import Button from '../Common/Button';
 import Input from '../Common/Input';
@@ -12,18 +13,17 @@ const Signup: React.FC = () => {
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      // Replace with actual signup logic
-      console.log('Signing up with:', email, password);
+      await signup(email, password);
       navigate('/');
     } catch (err) {
-      setError('Error signing up');
+      setError('Error creating account');
     }
-  }
+  };
 
   return (
-    <div className="max-w-md mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-4">Sign Up</h2>
-      {error && <p className="text-red-500">{error}</p>}
+    <div className="max-w-md mx-auto p-6 bg-white shadow rounded-lg">
+      <h2 className="text-3xl font-bold mb-6">Sign Up</h2>
+      {error && <p className="text-red-500 mb-4">{error}</p>}
       <form onSubmit={handleSignup}>
         <Input label="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
         <Input label="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />

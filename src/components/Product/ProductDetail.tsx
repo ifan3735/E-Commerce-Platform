@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { getProduct } from '../../services/productService';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../store/cartSlice';
 import Button from '../Common/Button';
@@ -20,20 +21,16 @@ const ProductDetail: React.FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const getProduct = async () => {
+    const fetchProduct = async () => {
       try {
-        const response = await fetch(`https://fakestoreapi.com/products/${productId}`);
-        if (response.ok) {
-          const product = await response.json();
-          setProduct(product);
-        } else {
-          console.error('Failed to fetch product');
-        }
+        const response = await getProduct(Number(productId));
+        setProduct(response);
       } catch (error) {
-        console.error('Failed to fetch product:', error);
+        console.error('Error fetching product:', error);
       }
     };
-    getProduct();
+
+    fetchProduct();
   }, [productId]);
 
   const handleAddToCart = () => {
@@ -49,14 +46,14 @@ const ProductDetail: React.FC = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto p-4">
+    <div className="max-w-5xl mx-auto p-6 bg-white shadow rounded-lg">
       {product ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <img src={product.image} alt={product.title} className="w-full h-auto object-cover rounded" />
           <div>
             <h2 className="text-3xl font-bold mb-2">{product.title}</h2>
             <p className="text-gray-700 mb-4">{product.description}</p>
-            <p className="text-xl font-semibold text-indigo-500 mb-4">${product.price.toFixed(2)}</p>
+            <p className="text-xl font-semibold text-indigo-600 mb-4">${product.price.toFixed(2)}</p>
             <div className="mb-4">
               <label htmlFor="quantity" className="block mb-2">Quantity</label>
               <input

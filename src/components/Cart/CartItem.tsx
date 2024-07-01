@@ -25,11 +25,11 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
   };
 
   return (
-    <div className="flex items-center justify-between p-4 border-b">
-      <img src={item.image} alt={item.title} className="w-16 h-16 object-cover rounded mr-4" />
-      <div>
-        <h3 className="text-lg">{item.title}</h3>
-        <p className="text-indigo-500">${item.price.toFixed(2)}</p>
+    <div className="flex items-center justify-between p-4 border-b border-gray-200">
+      <img src={item.image} alt={item.title} className="w-20 h-20 object-cover rounded mr-4" />
+      <div className="flex-1">
+        <h3 className="text-xl font-semibold">{item.title}</h3>
+        <p className="text-indigo-600">${item.price.toFixed(2)}</p>
       </div>
       <div className="flex items-center">
         <input
@@ -39,7 +39,7 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
           className="w-16 text-center border rounded mr-4"
           min="1"
         />
-        <Button onClick={handleRemove} className="text-red-500 bg-transparent hover:bg-red-100">Remove</Button>
+        <Button onClick={handleRemove} className="text-red-600 bg-transparent hover:bg-red-100">Remove</Button>
       </div>
     </div>
   );
