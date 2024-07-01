@@ -1,3 +1,4 @@
+// src/components/Cart/CartItem.tsx
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { removeFromCart, updateQuantity } from '../../store/cartSlice';
@@ -21,7 +22,10 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
   };
 
   const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(updateQuantity({ id: item.id, quantity: +e.target.value }));
+    const newQuantity = +e.target.value;
+    if (newQuantity > 0) {
+      dispatch(updateQuantity({ id: item.id, quantity: newQuantity }));
+    }
   };
 
   return (
