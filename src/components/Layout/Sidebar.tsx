@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
   HomeIcon,
-  ClipboardListIcon,
+  ClipboardIcon,
   UserIcon,
   CubeIcon,
 } from '@heroicons/react/20/solid';
@@ -13,7 +13,7 @@ const Sidebar: React.FC = () => {
   const links = [
     { to: '/admin', label: 'Dashboard', icon: HomeIcon },
     { to: '/admin/products', label: 'Manage Products', icon: CubeIcon },
-    { to: '/admin/orders', label: 'Manage Orders', icon: ClipboardListIcon },
+    { to: '/admin/orders', label: 'Manage Orders', icon: ClipboardIcon },
     { to: '/admin/users', label: 'Manage Users', icon: UserIcon },
   ];
 

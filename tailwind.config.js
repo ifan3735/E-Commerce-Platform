@@ -1,10 +1,10 @@
 // tailwind.config.js
 module.exports = {
   content: [
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,jsx,ts,tsx}", // Scan all files for TailwindCSS classes
   ],
   theme: {
     extend: {},
   },
   plugins: [],
-}
+};
